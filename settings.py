@@ -23,7 +23,7 @@ class Settings():
             print(f"Error: 設定ファイル({file_name})が見つかりません")
             return {}
 
-    def validate_settings(self) -> bool:
+    def validate_settings(self) -> None:
         """設定ファイル検証"""
         setting = self._settings
 
@@ -34,14 +34,25 @@ class Settings():
         missing_keys = [key for key in required_keys if key not in setting]
 
         if missing_keys:
-            print("Error: 設定ファイルに以下のパラメータが存在しません: ", ", ".join(missing_keys))
-            return False
+            raise ValueError(f"設定ファイルに以下のパラメータが存在しません: {', '.join(missing_keys)}")
 
         if not setting[self.URL_DICT_KEY_NAME]:
-            print(f"Error: 設定ファイルのパラメータ'{self.URL_DICT_KEY_NAME}'に要素がありません")
-            return False
+            raise ValueError(f"設定ファイルのパラメータ'{self.URL_DICT_KEY_NAME}'に要素がありません")
 
-        return True
+        if not isinstance(setting[self.BROWSER_KEY_NAME], str):
+            raise ValueError(f"設定ファイルのパラメータ'{self.BROWSER_KEY_NAME}'の値'{setting[self.BROWSER_KEY_NAME]}'が文字列ではありません")
+
+        if not isinstance(setting[self.ACCESS_TIMES_KEY_NAME], int):
+            raise ValueError(f"設定ファイルのパラメータ'{self.ACCESS_TIMES_KEY_NAME}'の値'{setting[self.ACCESS_TIMES_KEY_NAME]}'が整数ではありません")
+
+        if not isinstance(setting[self.FIRST_WAIT_SEC_KEY_NAME], int):
+            raise ValueError(f"設定ファイルのパラメータ'{self.FIRST_WAIT_SEC_KEY_NAME}'の値'{setting[self.FIRST_WAIT_SEC_KEY_NAME]}'が整数ではありません")
 
     def get_settings(self) -> dict:
         return self._settings
+
+    def is_str(self, value) -> bool:
+        return type(value) is str
+
+    def is_int(self, value) -> bool:
+        return type(value) is int
