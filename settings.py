@@ -50,9 +50,3 @@ class Settings():
 
     def get_settings(self) -> dict:
         return self._settings
-
-    def is_str(self, value) -> bool:
-        return type(value) is str
-
-    def is_int(self, value) -> bool:
-        return type(value) is int
