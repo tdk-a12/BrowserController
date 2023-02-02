@@ -16,3 +16,6 @@ int: 初回待機時間(秒)
 dict: URLディクショナリ
   * (key) str: 適当な文字列
   * (val) str: URL
+
+# Author
+とよでんキングダム | Toyoden Kingdom (https://github.com/tdk-a12)
