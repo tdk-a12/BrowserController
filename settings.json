@@ -1,0 +1,10 @@
+{
+    "browser": "Chrome",
+    "access_times": 1,
+    "first_wait_sec": 10,
+    "url_dict": 
+    {
+        "Google": "https://www.google.co.jp/",
+        "Yahoo": "https://www.yahoo.co.jp/"
+    }
+}
