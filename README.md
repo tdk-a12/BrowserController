@@ -3,7 +3,7 @@ Chromeをシークレットモードかつヘッドレスモード(非表示)で
 * 指定したURLにアクセス
 * 一定時間待機後、ブラウザを閉じる
 
-URLは複数指定可能
+後述のsetting.jsonでいろいろ設定変更できます。
 
 # setting.json
 * browser<br>
